@@ -1,0 +1,16 @@
+
+$primary: #b0e3f5;
+$secondary: #be7feb;
+
+.space {
+    background-color: $primary;
+    padding: 50px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+  
+.btn-success {
+    background-color: $secondary;
+    color: #000;
+    border-radius: 50px;
+}

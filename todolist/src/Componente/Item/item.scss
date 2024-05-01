@@ -1,0 +1,34 @@
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+$primary: #b0f5c1;
+$secondary: #be7feb;
+$black: #000;
+
+.card {
+    background-color: $primary;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 35px;
+    color: $black;
+    border-radius: 30px;
+}
+
+.btn-info {
+    background-color: $secondary;
+    border-radius: 50px;
+    color: $black;
+    --bs-btn-border-color: $secondary;
+    width: fit-content;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn {
+    background-color: $secondary;
+    color: $black;
+}
+
+.border {
+    background-color: $secondary;
+    color: $black;
+}
