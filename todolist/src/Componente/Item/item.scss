@@ -32,3 +32,13 @@ $black: #000;
     background-color: $secondary;
     color: $black;
 }
+
+.btn-danger {
+    background-color: $secondary;
+    border-radius: 50px;
+    color: $black;
+    --bs-btn-border-color: $secondary;
+    width: fit-content;
+    margin-left: 10px;
+    margin-right: 10px;
+}

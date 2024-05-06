@@ -1,9 +1,22 @@
 
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './item.scss';
+import { useDispatch } from 'react-redux';
+import { removeGoal, editGoal } from '../../reducers/goalsSlice';
 
 function Item(props) {
+  const dispatch = useDispatch();
+
+  const handleRemove = () => {
+    dispatch(removeGoal(props.name));
+  };
+
+  const handleEdit = () => {
+    dispatch(editGoal(props.name));
+  };
+
   return (
     <Card>
       <Card.Body>
@@ -23,8 +36,8 @@ function Item(props) {
         </Card.Text>
       </Card.Body>
       <Card.Body>
-        <Button variant="info">Editar</Button>
-        <Button variant="info">Remover</Button>
+        <Button variant="info" onClick={handleEdit}>Editar</Button>
+        <Button variant="danger" onClick={handleRemove}>Remover</Button>
       </Card.Body>
     </Card>
   );

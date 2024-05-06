@@ -1,6 +1,7 @@
 
 $primary: #b0e3f5;
 $secondary: #be7feb;
+$black: 000;
 
 .space {
     background-color: $primary;
@@ -11,6 +12,6 @@ $secondary: #be7feb;
   
 .btn-success {
     background-color: $secondary;
-    color: #000;
+    color: $black;
     border-radius: 50px;
 }

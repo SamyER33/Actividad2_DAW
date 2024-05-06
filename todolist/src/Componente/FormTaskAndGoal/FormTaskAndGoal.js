@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './FormTaskAndGoal.scss';
 import { useDispatch } from 'react-redux';
-import {
-  addGoal
-} from '../../reducers/goalsSlice';
+import { addGoal } from '../../reducers/goalsSlice';
+import { addOption } from '../../reducers/optionSlice';
+import { addTask } from '../../reducers/taskSlice';
+import { addRemove } from '../../reducers/removeSlice';
 import { useRef } from 'react';
 
 function FormTaskAndGoal(props) {
@@ -14,11 +15,14 @@ function FormTaskAndGoal(props) {
   const inputRefDescription = useRef();
   const inputRefDueDate = useRef();
 
-  const dispatch = useDispatch
+  const dispatch = useDispatch();
 
   const addItem = (e) =>{
     e.preventDefault();
     dispatch(addGoal({'name':inputRefName.current.value, 'description':inputRefDescription.current.value, 'dueDate':inputRefDueDate.current.value}));
+    dispatch(addOption({ }));
+    dispatch(addTask({ }));
+    dispatch(addRemove({ }));
   }
 
   return (

@@ -2,17 +2,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const optionSlice = createSlice({
-    name:'opcion',
+    name:'option',
     initialState: {
         value: 'goals'
     },
     reducers:{
-        changeOption: (state, action) => {
+        addOption: (state, action) => {
             state.value = action.payload;
         }
     }
 })
 
-export const {addGoal} = optionSlice.actions;
+export const {addOption} = optionSlice.actions;
 
 export default optionSlice.reducer;
