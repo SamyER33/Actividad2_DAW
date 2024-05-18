@@ -7,6 +7,7 @@ import { addGoal } from '../../reducers/goalsSlice';
 import { addOption } from '../../reducers/optionSlice';
 import { addTask } from '../../reducers/taskSlice';
 import { addRemove } from '../../reducers/removeSlice';
+import { addTodo } from '../../reducers/todoSlice';
 import { useRef } from 'react';
 
 function FormTaskAndGoal(props) {
@@ -23,6 +24,7 @@ function FormTaskAndGoal(props) {
     dispatch(addOption({ }));
     dispatch(addTask({ }));
     dispatch(addRemove({ }));
+    dispatch(addTodo({'name':inputRefName.current.value, 'description':inputRefDescription.current.value, 'dueDate':inputRefDueDate.current.value}));
   }
 
   return (

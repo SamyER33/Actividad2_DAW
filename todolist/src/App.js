@@ -8,37 +8,41 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AddingMobileButton from './Componente/AddingMobileButton/AddingMobileButton.js';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { initAddTodo } from './reducers/todoSlice.js';
+import { } from './reducers/goalsSlice.js'
 
-const list = [
-  {
-    'name' : 'Ganar curso',
-    'description' : 'Ganar curso de desarrollo web',
-    'dueDate' : '29/04/2024'
-  },
-  {
-    'name' : 'Arreglar errores',
-    'description' : 'Revisar detenidamente las tareas',
-    'dueDate' : '04/05/2024'
-  },
-  {
-    'name' : 'Ir al salón de belleza',
-    'description' : 'Cita programada con el spa',
-    'dueDate' : '05/05/2024'
-  },
-  {
-    'name' : 'Mirar televisión',
-    'description' : 'Mirar el estreno de Cold Case',
-    'dueDate' : '01/05/2024'
-  },
-  {
-    'name' : 'Limpiar casa',
-    'description' : 'Lavar los platos, la ropa y limpiar mi habitación',
-    'dueDate' : '08/05/2024'
-  },
-]
 function App() {
   const goals = useSelector((state)=>state.goals.value);
+  // const option = useSelector((state)=>state.option.value);
+  // const remove = useSelector((state)=>state.remove.value);
+  // const task = useSelector((state)=>state.task.value);
+  // const todo = useSelector((state)=>state.todo.value);
+  const dispatch = useDispatch();
+
+  function initFetch(){
+    fetch("http://localhost:3001/tasks/getTasks",{
+      method:"GET",
+      headers:{
+        "Content-Type":"apllication/json",
+        "authorization":"cursodedesarrollodeaplicacionesweb"
+      }
+    }).then((response)=>{
+      return response.json();
+    }).then((response)=>{
+      response.map((task)=>{
+        dispatch((initAddTodo(task)));
+      })
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
+
+  useEffect(()=>{
+    initFetch();
+  },[]);
+
   return (
     <div className="App">
       <Menu/>
