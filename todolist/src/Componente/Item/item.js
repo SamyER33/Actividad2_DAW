@@ -14,7 +14,15 @@ function Item(props) {
   };
 
   const handleEdit = () => {
-    dispatch(editGoal(props.name));
+    const newDescription = prompt("Nueva descripción: ", props.description);
+    const newDueDate = prompt("Nueva fecha límite: ", props.dueDate);
+    if (newDescription !== null && newDueDate !== null) {
+      dispatch(editGoal({
+        name: props.name,
+        description: newDescription,
+        dueDate: newDueDate
+      }));
+    }
   };
 
   return (

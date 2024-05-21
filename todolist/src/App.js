@@ -11,10 +11,11 @@ import AddingMobileButton from './Componente/AddingMobileButton/AddingMobileButt
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { initAddTodo } from './reducers/todoSlice.js';
-import { } from './reducers/goalsSlice.js'
+import { addGoal } from './reducers/goalsSlice.js'
 
 function App() {
   const goals = useSelector((state)=>state.goals.value);
+  console.log(goals)
   // const option = useSelector((state)=>state.option.value);
   // const remove = useSelector((state)=>state.remove.value);
   // const task = useSelector((state)=>state.task.value);
@@ -25,7 +26,7 @@ function App() {
     fetch("http://localhost:3001/tasks/getTasks",{
       method:"GET",
       headers:{
-        "Content-Type":"apllication/json",
+        "Content-Type":"application/json",
         "authorization":"cursodedesarrollodeaplicacionesweb"
       }
     }).then((response)=>{
@@ -36,7 +37,23 @@ function App() {
       })
     }).catch((err)=>{
       console.log(err);
-    })
+    });
+
+    fetch("http://localhost:3001/goals/getGoals",{
+      method:"GET",
+      headers:{
+        "Content-Type":"application/json",
+        "authorization":"cursodedesarrollodeaplicacionesweb"
+      }
+    }).then((response)=>{
+      return response.json();
+    }).then((response)=>{
+      response.map((goals)=>{
+        dispatch((addGoal(goals)));
+      })
+    }).catch((err)=>{
+      console.log(err);
+    });
   }
 
   useEffect(()=>{

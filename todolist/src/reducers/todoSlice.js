@@ -21,12 +21,11 @@ export const todoSlice = createSlice({
             });
         },
         initAddTodo: (state, action) => {
-            console.log(action.payload);
             state.value.push(action.payload);
         },
         removeTodo: (state, action) => {
             state.value = state.value.filter((task)=>task.id!==action.payload);
-            fetch("localhost:3001/tasks/removeTasks/"+action.payload,{
+            fetch("http://localhost:3001/tasks/removeTasks/"+action.payload,{
                 method:"DELETE",
                 headers:{
                     "Content-Type":"application/json",
